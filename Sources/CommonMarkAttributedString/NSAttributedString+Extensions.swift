@@ -30,11 +30,10 @@ extension NSAttributedString {
             .characterEncoding: String.Encoding.utf8.rawValue
         ]
         
-        var documentAttributes: NSDictionary? = [:]
         #if canImport(UIKit)
-        let mutableAttributedString = try NSMutableAttributedString(data: data, options: options, documentAttributes: &documentAttributes)
+        let mutableAttributedString = try NSMutableAttributedString(data: data, options: options, documentAttributes: nil)
         #elseif canImport(AppKit)
-        guard let mutableAttributedString = NSMutableAttributedString(html: data, options: options, documentAttributes: &documentAttributes) else {
+        guard let mutableAttributedString = NSMutableAttributedString(html: data, options: options, documentAttributes: nil) else {
             return nil
         }
         #endif
